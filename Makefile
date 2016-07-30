@@ -8,19 +8,21 @@ GENERAL= bash_profile bashrc gitconfig tmux.conf inputrc
 GEN_DEPS= $(foreach G,$(GENERAL), $(HOME)/.$(notdir $(G)))
 general: $(GEN_DEPS)
 $(HOME)/.%: $(abspath general/%)
-	ln -f -s $< $@
+	ln -s $< $@
 
 $(HOME)/.spacemacs: $(abspath emacs/profile)
-	ln -f -s $< $@
+	ln -s $< $@
 
-$(HOME)/.emacs.d: sm $(abspath emacs/spacemacs)
-	ln -f -s $< $@
+$(HOME)/.emacs.d: $(abspath emacs/spacemacs) sm 
+	ln -s $< $@
+	rm -f $(abspath emacs/spacemacs/spacemacs)
 
 $(HOME)/.lein/profiles.clj: $(abspath lein/profiles.clj)
-	ln -f -s $< $@
+	ln -s $< $@
 
-$(HOME)/bin/lein: sm $(HOME)/bin $(abspath lein/leiningen/bin/lein)
-	ln -f -s $< $@
+$(HOME)/bin/lein:
+	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $@
+	chmod 0755 $@
 
 $(HOME)/bin:
 	mkdir -p $(HOME)/bin
