@@ -30,14 +30,20 @@ values."
      emacs-lisp
      org
 
+     spell-checking
      auto-completion
      syntax-checking
 
-     ;; org
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t
+             colors-enable-rainbow-identifiers t)
+
+     (eyebrowse :variables
+                eyebrowse-display-help nil)
+
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;; spell-checking
      ;; version-control
      )
    ;; List of additional packages that will be installed without being

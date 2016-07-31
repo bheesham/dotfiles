@@ -25,8 +25,8 @@
             [lein-newnew "0.3.4"]
             [lein-cljfmt "0.5.3"]]}
   ;;https://github.com/clojure-emacs/cider/commit/0e35ce1eb484b88d9314c09d47a9510ff08b219f
- :repl {:plugins [[cider/cider-nrepl "0.12.0"]
-                 [refactor-nrepl "2.2.0"]]
+ :repl {:plugins [[cider/cider-nrepl "0.14.0-SNAPSHOT"]
+                 [refactor-nrepl "2.3.0-SNAPSHOT"]]
         :dependencies [;; REPL
                        ^:replace [org.clojure/tools.nrepl "0.2.12"]
                        ;; Debug
