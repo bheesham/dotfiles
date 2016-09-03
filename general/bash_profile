@@ -6,12 +6,12 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-export
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.cabal/bin:$HOME/.rvm/bin:$HOME/.local/bin:/usr/lib/node_modules/express-generator/bin/:$HOME/.cargo/bin
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/.cabal/bin:$HOME/.rvm/bin:$HOME/.local/bin:/usr/lib/node_modules/express-generator/bin/:$HOME/.cargo/bin
+
 export EDITOR="nvim"
 
 # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 set -o vi
 
