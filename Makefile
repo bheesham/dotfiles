@@ -1,12 +1,13 @@
-.PHONY: help default emacs lein general sm
+.PHONY: help default emacs clj general sm
 
-default: emacs lein general
+default: emacs general clj
 emacs: $(HOME)/.spacemacs $(HOME)/.emacs.d
-lein: $(HOME)/.lein/profiles.clj $(HOME)/bin/lein
 
 GENERAL= bash_profile bashrc gitconfig tmux.conf inputrc
 GEN_DEPS= $(foreach G,$(GENERAL), $(HOME)/.$(notdir $(G)))
 general: $(GEN_DEPS)
+
+clj: $(HOME)/.lein/profiles.clj $(HOME)/bin/lein $(HOME)/bin/boot
 
 $(HOME)/.%: $(abspath general/%)
 	@echo 0 > /dev/null || (test -e $@ && cp $@ $(abspath backup)/$(notdir $<))
@@ -16,7 +17,7 @@ $(HOME)/.%: $(abspath general/%)
 $(HOME)/.spacemacs: $(abspath emacs/profile)
 	ln -s $< $@
 
-$(HOME)/.emacs.d: $(abspath emacs/spacemacs) sm 
+$(HOME)/.emacs.d: $(abspath emacs/spacemacs) sm
 	ln -s $< $@
 	rm -f $(abspath emacs/spacemacs/spacemacs)
 
@@ -30,12 +31,16 @@ $(HOME)/bin:
 	mkdir -p $(HOME)/bin
 
 $(HOME)/bin/lein: $(HOME)/bin
-	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $@
+	curl -fsSLo $@ https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+	chmod 0755 $@
+
+$(HOME)/bin/boot:
+	curl -fsSLo $@ https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 	chmod 0755 $@
 
 sm:
 	git submodule update --init
 
 clean:
-	rm -rf $(HOME)/bin/lein $(HOME)/.lein $(HOME)/.emacs.d $(HOME)/.spacemacs \
-		$(GEN_DEPS)
+	rm -rf $(HOME)/bin/boot $(HOME)/bin/lein $(HOME)/.lein $(HOME)/.emacs.d \
+					$(HOME)/.spacemacs $(GEN_DEPS)
