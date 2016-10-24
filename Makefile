@@ -1,30 +1,31 @@
-.PHONY: help default emacs lein general sm vim clean noop
-
-default: vim emacs lein general
-vim: $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.config/vim $(HOME)/.vim/autoload/pathogen.vim
-emacs: $(HOME)/.spacemacs $(HOME)/.emacs.d
-lein: $(HOME)/.lein/profiles.clj $(HOME)/bin/lein
-
-clean:
-	rm -f $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.config/vim
-	rm -f $(HOME)/.spacemacs $(HOME)/.emacs.d
-	rm -f $(HOME)/bin/lein $(HOME)/.lein/profiles.clj
+.PHONY: help default emacs clj general sm vim clean noop
 
 GENERAL= bash_profile bashrc gitconfig tmux.conf inputrc
 GEN_DEPS= $(foreach G,$(GENERAL), $(HOME)/.$(notdir $(G)))
 
-general: $(GEN_DEPS)
-$(HOME)/.%: $(abspath general/%)
-	ln -s $< $@
+default: vim emacs clj general
+vim: $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.config/vim $(HOME)/.vim/autoload/pathogen.vim
+emacs: $(HOME)/.spacemacs $(HOME)/.emacs.d
+clj: $(HOME)/.lein/profiles.clj $(HOME)/bin/lein $(HOME)/bin/boot
+general: $(GEN_DEPS) $(HOME)/bin
 
-# Vim
-$(HOME)/.vimrc: $(abspath vim/vimrc)
+clean:
+	rm -f $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.config/vim
+	rm -f $(HOME)/.spacemacs $(HOME)/.emacs.d
+	rm -f $(HOME)/bin/lein $(HOME)/bin/boot $(HOME)/.lein/profiles.clj
+	rm -f $(GEN_DEPS)
+
+$(HOME)/.%: $(abspath general/%)
+	@echo 0 > /dev/null || (test -e $@ && cp $@ $(abspath backup)/$(notdir $<))
+	@echo 0 > /dev/null || (test -e $@ && rm $@)
 	ln -fs $< $@
 
-$(HOME)/.vim/autoload/pathogen.vim: vim/vim/autoload/pathogen.vim
-
-vim/vim/autoload/pathogen.vim: noop
+# Vim
+$(HOME)/.vim/autoload/pathogen.vim: noop
 	curl https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim > $@
+
+$(HOME)/.vimrc: $(abspath vim/vimrc)
+	ln -fs $< $@
 
 $(HOME)/.vim: $(abspath vim/vim)
 	ln -Fs $< $@
@@ -41,10 +42,15 @@ $(HOME)/.emacs.d: $(abspath emacs/spacemacs)
 
 # Lein
 $(HOME)/.lein/profiles.clj: $(abspath lein/profiles.clj)
+	mkdir -p $(basename $@)
 	ln -s $< $@
 
 $(HOME)/bin/lein: noop
 	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $@
+	chmod 0755 $@
+
+$(HOME)/bin/boot: noop
+	curl https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh > $@
 	chmod 0755 $@
 
 # Bin
