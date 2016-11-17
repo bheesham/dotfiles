@@ -1,9 +1,11 @@
-.PHONY: help default emacs clj general sm vim clean noop
+.PHONY: help default fish emacs clj general sm vim clean noop
 
-GENERAL= bash_profile bashrc gitconfig tmux.conf inputrc
-GEN_DEPS= $(foreach G,$(GENERAL), $(HOME)/.$(notdir $(G)))
+GENERAL:= bash_profile bashrc gitconfig tmux.conf inputrc
+GEN_DEPS:= $(foreach G,$(GENERAL), $(HOME)/.$(notdir $(G)))
+GET:=curl -fsS
 
 default: vim emacs clj general
+fish: $(HOME)/.config/fish
 vim: $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.config/vim $(HOME)/.vim/autoload/pathogen.vim
 emacs: $(HOME)/.spacemacs $(HOME)/.emacs.d
 clj: $(HOME)/.lein/profiles.clj $(HOME)/bin/lein $(HOME)/bin/boot
@@ -20,9 +22,13 @@ $(HOME)/.%: $(abspath general/%)
 	@echo 0 > /dev/null || (test -e $@ && rm $@)
 	ln -fs $< $@
 
+# Fish
+$(HOME)/.config/fish: $(abspath fish)
+	ln -fs $< $@
+
 # Vim
 $(HOME)/.vim/autoload/pathogen.vim: noop
-	curl https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim > $@
+	$(GET) https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim > $@
 
 $(HOME)/.vimrc: $(abspath vim/vimrc)
 	ln -fs $< $@
@@ -46,11 +52,11 @@ $(HOME)/.lein/profiles.clj: $(abspath lein/profiles.clj)
 	ln -s $< $@
 
 $(HOME)/bin/lein: noop
-	curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $@
+	$(GET) https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $@
 	chmod 0755 $@
 
 $(HOME)/bin/boot: noop
-	curl https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh > $@
+	$(GET) https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh > $@
 	chmod 0755 $@
 
 # Bin
