@@ -19,10 +19,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     (typescript :variables
-                 typescript-fmt-on-save t)
-     javascript
-     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -30,6 +26,7 @@ values."
      ;; ----------------------------------------------------------------
      better-defaults
      git
+
      markdown
      clojure
      emacs-lisp
@@ -38,19 +35,25 @@ values."
      yaml
      rust
      python
+     shell-scripts
+     purescript
+     docker
+     (typescript :variables
+                 typescript-fmt-on-save t)
+     javascript
+     html
+     csv
 
      spell-checking
      auto-completion
      syntax-checking
+     nlinum
 
      (colors :variables
              colors-enable-nyan-cat-progress-bar t
              colors-enable-rainbow-identifiers f)
 
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; version-control
+     (rcirc :variables rcirc-enable-authinfo-support t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -271,19 +274,18 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
-  ;(golden-ratio-mode)
-  ;(global-linum-mode)
-  (linum-relative-global-mode)
-
-  (add-hook 'org-mode-hook 'spacemacs/toggle-line-numbers-off 'append)
+  (global-nlinum-relative-mode)
 
   (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
   (set-default 'truncate-lines t)
   (set-face-attribute 'default nil :height 150)
-  ;(setq cljr-suppress-middleware-warnings t)
   (setq cider-repl-display-help-banner nil)
+
+  (setq neo-hidden-regexp-list '("^\\." "\\.cs\\.meta$"
+                                 "\\.pyc$" "~$" "^#.*#$"
+                                 "\\.elc$" "^.+\.egg-info"
+                                 "__pycache__"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

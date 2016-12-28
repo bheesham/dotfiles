@@ -21,3 +21,5 @@ alias la='ll -a'
 alias vim='nvim'
 alias vi='nvim'
 alias ..='cd ..'
+
+export PS1="`whoami` $ "

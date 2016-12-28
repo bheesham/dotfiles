@@ -4,7 +4,6 @@
   :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
   :plugins [;; REPL
             [lein-try "0.4.3"]
-            [venantius/ultra "0.4.0"]
             ;; Application server
             [lein-immutant "2.0.0"]
             ;; Automated testing
@@ -41,27 +40,7 @@
                        [io.aviso/pretty "0.1.17"]
                        [slamhound "1.5.5"]
                        [criterium "0.4.3"]]
-         :repl-options {:init (set! *print-length* 1000)
-                        :nrepl-middleware
-                        [cider.nrepl.middleware.apropos/wrap-apropos
-                         cider.nrepl.middleware.classpath/wrap-classpath
-                         cider.nrepl.middleware.complete/wrap-complete
-                         cider.nrepl.middleware.debug/wrap-debug
-                         cider.nrepl.middleware.format/wrap-format
-                         cider.nrepl.middleware.info/wrap-info
-                         cider.nrepl.middleware.inspect/wrap-inspect
-                         cider.nrepl.middleware.macroexpand/wrap-macroexpand
-                         cider.nrepl.middleware.ns/wrap-ns
-                         cider.nrepl.middleware.pprint/wrap-pprint
-                         cider.nrepl.middleware.pprint/wrap-pprint-fn
-                         cider.nrepl.middleware.refresh/wrap-refresh
-                         cider.nrepl.middleware.resource/wrap-resource
-                         cider.nrepl.middleware.stacktrace/wrap-stacktrace
-                         cider.nrepl.middleware.test/wrap-test
-                         cider.nrepl.middleware.trace/wrap-trace
-                         cider.nrepl.middleware.out/wrap-out
-                         cider.nrepl.middleware.undef/wrap-undef
-                         cider.nrepl.middleware.version/wrap-version]}
+         :repl-options {:init (set! *print-length* 1000)}
          :injections [(require 'spyscope.core)
                       (require '[vinyasa.inject :as inject])
                       (inject/in [vinyasa.inject :refer [inject [in inject-in]]]
