@@ -8,9 +8,11 @@ set -x OPENSSL_LIB_DIR /usr/local/opt/openssl/lib
 
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias vi="vim"
+alias dc="docker-compose"
 set -x EDITOR vim
 set -x HOMEBREW_EDITOR vim
 
 function fish_prompt
-  echo -n (whoami)' $ '
+  echo (whoami) @ (hostname) / (basename (pwd))
+  echo -n '$ '
 end
