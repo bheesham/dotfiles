@@ -23,15 +23,14 @@
             [lein-kibit "0.1.2" :exclusions [org.clojure/clojure]]
             [lein-newnew "0.3.4"]
             [lein-cljfmt "0.5.3"]]}
-  ;;https://github.com/clojure-emacs/cider/commit/0e35ce1eb484b88d9314c09d47a9510ff08b219f
+ ;;https://github.com/clojure-emacs/cider/commit/0e35ce1eb484b88d9314c09d47a9510ff08b219f
  :repl {:plugins [[cider/cider-nrepl "0.14.0-SNAPSHOT"]
-                 [refactor-nrepl "2.3.0-SNAPSHOT"]]
+                  [refactor-nrepl "2.3.0-SNAPSHOT"]]
         :dependencies [;; REPL
                        ^:replace [org.clojure/tools.nrepl "0.2.12"]
                        ;; Debug
                        [org.clojars.gjahad/debug-repl "0.3.3"]
                        [difform "1.1.2"]
-                       [spyscope "0.1.5"]
                        [org.clojure/tools.trace "0.7.8"]
                        [org.clojure/tools.namespace "0.2.10"]
                        [alembic "0.3.2"]
@@ -39,17 +38,19 @@
                        [im.chit/vinyasa.reflection "0.3.4"]
                        [io.aviso/pretty "0.1.17"]
                        [slamhound "1.5.5"]
-                       [criterium "0.4.3"]]
-         :repl-options {:init (set! *print-length* 1000)}
-         :injections [(require 'spyscope.core)
-                      (require '[vinyasa.inject :as inject])
-                      (inject/in [vinyasa.inject :refer [inject [in inject-in]]]
+                       [criterium "0.4.3"]
+                       [walmartlabs/datascope "0.1.1"]]
+        :repl-options {:init (set! *print-length* 1000)}
+        :injections [(require '[vinyasa.inject :as inject])
+                     (inject/in [vinyasa.inject :refer [inject [in inject-in]]]
 
-                                 [alembic.still [distill pull] lein [load-project pull-project]]
-                                 [clojure.java.shell sh]
-                                 [clojure.pprint pprint]
-                                 [clojure.repl doc source]
-                                 [clojure.tools.namespace.repl refresh]
+                                [alembic.still [distill pull] lein [load-project pull-project]]
+                                [clojure.java.shell sh]
+                                [clojure.pprint pprint]
+                                [clojure.repl doc source]
+                                [clojure.tools.namespace.repl refresh]
 
-                                 clojure.core
-                                 [vinyasa.reflection .& .> .? .* .% .%>])]}}
+                                [com.walmartlabs.datascope view]
+
+                                clojure.core
+                                [vinyasa.reflection .& .> .? .* .% .%>])]}}
