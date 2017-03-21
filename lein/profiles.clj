@@ -7,7 +7,7 @@
             ;; Application server
             [lein-immutant "2.0.0"]
             ;; Automated testing
-            [lein-cloverage "1.0.2"]
+            [lein-cloverage "1.0.9"]
             [lein-test-out "0.3.1"]
             ;; Package management
             [lein-ancient "0.6.7" :exclusions [org.clojure/clojure]]
@@ -18,11 +18,18 @@
             [lein-clojuredocs "1.0.2"]
             ;; Static analysis
             [lein-typed "0.3.5"]
-            [jonase/eastwood "0.2.1"]
-            [lein-bikeshed "0.2.0"]
-            [lein-kibit "0.1.2" :exclusions [org.clojure/clojure]]
+            [lein-bikeshed "0.4.1"]
+            [lein-kibit "0.1.3" :exclusions [org.clojure/clojure]]
             [lein-newnew "0.3.4"]
-            [lein-cljfmt "0.5.3"]]}
+            [lein-cljfmt "0.5.3"]
+            [jonase/eastwood "0.2.3"]
+            [venantius/yagni "0.1.4"]]
+  :dependencies [[slamhound "1.5.5"]]
+  :aliases {"slamhound" ["run" "-m" "slam.hound"]
+            "omni" ["do"
+                    ["clean"]
+                    ["with-profile" "production" "deps" ":tree"]
+                    ["kibit"] ["bikeshed"] ["cloverage"]]}}
  ;;https://github.com/clojure-emacs/cider/commit/0e35ce1eb484b88d9314c09d47a9510ff08b219f
  :repl {:plugins [[cider/cider-nrepl "0.14.0-SNAPSHOT"]
                   [refactor-nrepl "2.3.0-SNAPSHOT"]]
@@ -32,12 +39,11 @@
                        [org.clojars.gjahad/debug-repl "0.3.3"]
                        [difform "1.1.2"]
                        [org.clojure/tools.trace "0.7.8"]
-                       [org.clojure/tools.namespace "0.2.10"]
+                       [org.clojure/tools.namespace "0.2.11"]
                        [alembic "0.3.2"]
                        [im.chit/vinyasa.inject "0.3.4"]
                        [im.chit/vinyasa.reflection "0.3.4"]
                        [io.aviso/pretty "0.1.17"]
-                       [slamhound "1.5.5"]
                        [criterium "0.4.3"]
                        [walmartlabs/datascope "0.1.1"]]
         :repl-options {:init (set! *print-length* 1000)}
