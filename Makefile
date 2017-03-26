@@ -4,7 +4,7 @@ GENERAL:= bash_profile bashrc gitconfig tmux.conf inputrc
 GEN_DEPS:= $(foreach G,$(GENERAL), $(HOME)/.$(notdir $(G)))
 GET:=curl -fsS
 
-default: vim emacs clj general
+default: vim emacs clj general fish
 fish: $(HOME)/.config/fish
 vim: $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.config/vim $(HOME)/.vim/autoload/pathogen.vim
 emacs: $(HOME)/.spacemacs $(HOME)/.emacs.d
