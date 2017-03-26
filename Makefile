@@ -51,11 +51,11 @@ $(HOME)/.lein/profiles.clj: $(abspath lein/profiles.clj)
 	mkdir -p $(basename $@)
 	ln -s $< $@
 
-$(HOME)/bin/lein: noop
+$(HOME)/bin/lein: $(HOME)/bin noop
 	$(GET) https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > $@
 	chmod 0755 $@
 
-$(HOME)/bin/boot: noop
+$(HOME)/bin/boot: $(HOME)/bin noop
 	$(GET) https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh > $@
 	chmod 0755 $@
 
