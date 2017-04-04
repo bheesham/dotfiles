@@ -278,8 +278,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-nlinum-relative-mode)
 
-  (setq-default explicit-shell-file-name "/bin/bash")
-  (setq-default shell-file-name "/bin/bash")
+  (setq-default explicit-shell-file-name "/usr/local/bin/fish")
+  (setq-default shell-file-name "/usr/local/bin/fish")
 
   (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
