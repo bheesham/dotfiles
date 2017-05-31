@@ -31,32 +31,38 @@
                     ["with-profile" "production" "deps" ":tree"]
                     ["kibit"] ["bikeshed"] ["cloverage"]]}}
  ;;https://github.com/clojure-emacs/cider/commit/0e35ce1eb484b88d9314c09d47a9510ff08b219f
- :repl {:plugins [[cider/cider-nrepl "0.14.0-SNAPSHOT"]
+ :repl {:plugins [[cider/cider-nrepl "0.15.0-SNAPSHOT"]
                   [refactor-nrepl "2.3.0-SNAPSHOT"]]
         :dependencies [;; REPL
                        ^:replace [org.clojure/tools.nrepl "0.2.12"]
                        ;; Debug
+                       [im.chit/lucid.core.inject "1.3.9"]
                        [org.clojars.gjahad/debug-repl "0.3.3"]
                        [difform "1.1.2"]
                        [org.clojure/tools.trace "0.7.8"]
                        [org.clojure/tools.namespace "0.2.11"]
-                       [alembic "0.3.2"]
-                       [im.chit/vinyasa.inject "0.3.4"]
-                       [im.chit/vinyasa.reflection "0.3.4"]
                        [io.aviso/pretty "0.1.17"]
                        [criterium "0.4.3"]
-                       [walmartlabs/datascope "0.1.1"]]
+                       [walmartlabs/datascope "0.1.1"]
+                       [com.taoensso/tufte "1.1.1"]
+                       [com.taoensso/timbre "4.10.0"]]
         :repl-options {:init (set! *print-length* 1000)}
-        :injections [(require '[vinyasa.inject :as inject])
-                     (inject/in [vinyasa.inject :refer [inject [in inject-in]]]
+        :injections [(require '[lucid.core.inject :as inject]
+                              '[taoensso.tufte])
+                     (taoensso.tufte/add-basic-println-handler! {})
+                     (inject/in [lucid.core.inject :refer [inject [in inject-in]]]
 
-                                [alembic.still [distill pull] lein [load-project pull-project]]
+                                p
                                 [clojure.java.shell sh]
-                                [clojure.pprint pprint]
-                                [clojure.repl doc source]
                                 [clojure.tools.namespace.repl refresh]
 
-                                [com.walmartlabs.datascope view]
+                                r
+                                [clojure.repl doc source]
+                                [clojure.pprint pprint]
 
-                                clojure.core
-                                [vinyasa.reflection .& .> .? .* .% .%>])]}}
+                                d
+                                [taoensso.timbre spy get-env]
+                                [taoensso.tufte defnp p profiled profile]
+                                [com.walmartlabs.datascope view]
+                                [com.georgejahad.difform [difform difff]]
+                                )]}}
