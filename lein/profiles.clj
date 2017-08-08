@@ -34,7 +34,9 @@
  :repl {:plugins [[cider/cider-nrepl "0.10.2"] ; Clojure 1.7.0 and below
                   #_[cider/cider-nrepl "0.15.1-SNAPSHOT"] ; Clojure 1.8 and above.
                   ]
-        :dependencies [[com.taoensso/timbre "4.1.0"]]
+        :dependencies [[com.taoensso/timbre "4.1.0"]
+                       [org.clojure/tools.namespace "0.2.11"]
+                       ]
         :repl-options {:init (set! *print-length* 1000)}
         :injections [(require '[clojure.tools.namespace.repl :refer [refresh]]
                               '[clojure.repl :refer [doc source]]
