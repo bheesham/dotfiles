@@ -1,10 +1,8 @@
 function try_add_path -d "Attempts to add a directory to $PATH."
   for path in $argv
-    if not test -d $path
-      return 1
+    if test -d $path
+      set -x PATH $PATH $path
     end
-
-    set -x PATH $PATH $path
   end
 end
 
@@ -19,7 +17,8 @@ try_add_path /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin \
              /usr/local/MacGPG2/bin /Library/TeX/texbin \
              /usr/local/opt/coreutils/libexec/gnubin \
              /usr/local/opt/gnu-sed/bin \
-             /usr/lib/node_modules/express-generator/bin/
+             /usr/lib/node_modules/express-generator/bin \
+             /Applications/Postgres.app/Contents/Versions/9.5/bin
 
 if not test "$TERM" = "dumb"
   fish_vi_key_bindings
@@ -31,7 +30,7 @@ if uname -a | grep -q Darwin
   set -x OPENSSL_LIB_DIR /usr/local/opt/openssl/lib
 end
 
-for trout in $HOME/.config/work/extras.fish $HOME/.config/priv/extras.fish
+for trout in $HOME/.config/fish/work.fish $HOME/.config/fish/priv.fish
   if test -e $trout
     source $trout
   end

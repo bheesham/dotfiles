@@ -1,0 +1,4 @@
+Requirements:
+
+    * cURL
+    * GNU Stow
