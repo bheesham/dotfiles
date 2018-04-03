@@ -2,7 +2,7 @@
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+    . ~/.bashrc
 fi
 
 # Load RVM into a shell session *as a function*
@@ -14,5 +14,8 @@ alias l='ls -l'
 alias ll='ls -lh'
 alias la='ll -a'
 alias ..='cd ..'
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH
 
 export PS1="`whoami` $ "
