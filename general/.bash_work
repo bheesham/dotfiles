@@ -1,0 +1,5 @@
+if [ -f ~/dev/auvik_ops/dist/auvikrc ]; then
+    . ~/dev/auvik_ops/dist/auvikrc
+fi
+
+export PRIVATE_AUVIK_CREDENTIALS=/Users/bheesham/.st.cfg

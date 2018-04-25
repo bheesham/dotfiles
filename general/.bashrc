@@ -5,9 +5,8 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-if [ -f ~/dev/auvik_scripts/bin/auvikrc ]; then
-    . ~/dev/auvik_scripts/bin/auvikrc
-fi
+export PATH=/Users/bheesham/.local/bin:$PATH
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+if [ -f ~/.bash_work ]; then
+	. ~/.bash_work
+fi

@@ -11,12 +11,19 @@ function fish_prompt -d "Customize the fish prompt."
   echo -n '$ '
 end
 
+function cls -d "clear and ls"
+    clear
+    ls
+end
+
 try_add_path /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin \
              $HOME/bin $HOME/.cargo/bin $HOME/.cabal/bin $HOME/.rvm/bin \
              $HOME/.local/bin \
+             /usr/local/opt/imagemagick@6/bin \
              /usr/local/MacGPG2/bin /Library/TeX/texbin \
              /usr/local/opt/coreutils/libexec/gnubin \
              /usr/local/opt/gnu-sed/bin \
+             /usr/local/opt/python@2/libexec/bin \
              /usr/lib/node_modules/express-generator/bin \
              /Applications/Postgres.app/Contents/Versions/9.5/bin
 
