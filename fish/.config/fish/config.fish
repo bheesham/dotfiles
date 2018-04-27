@@ -37,7 +37,7 @@ if uname -a | grep -q Darwin
   set -x OPENSSL_LIB_DIR /usr/local/opt/openssl/lib
 end
 
-for trout in $HOME/.config/fish/work.fish $HOME/.config/fish/priv.fish
+for trout in $HOME/.config/fish/work.fish $HOME/.config/fish/priv.fish $HOME/.asdf/asdf.fish
   if test -e $trout
     source $trout
   end
