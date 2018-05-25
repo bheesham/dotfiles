@@ -10,6 +10,7 @@ do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim config bin general lein
 	$(STOW) -S -t $(HOME)/bin bin
 	$(STOW) -S -t $(HOME)/.asdf asdf
 	$(STOW) -S -t $(HOME) lein
+	ln -fs $(HOME)/.config/repoint/implant.sh $(HOME)/bin
 
 up: 
 	$(GET) https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > vim/.vim/autoload/plug.vim
