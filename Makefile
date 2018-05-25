@@ -3,9 +3,9 @@
 STOW:=stow --verbose=3
 GET:=curl -fsS
 
-do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim fish bin general lein
+do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim config bin general lein
 	$(STOW) -S -t $(HOME) vim
-	$(STOW) -S -t $(HOME) fish
+	$(STOW) -S -t $(HOME) config
 	$(STOW) -S -t $(HOME) general
 	$(STOW) -S -t $(HOME)/bin bin
 	$(STOW) -S -t $(HOME)/.asdf asdf
