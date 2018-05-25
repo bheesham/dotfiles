@@ -72,6 +72,11 @@ let g:slime_paste_file = tempname()
 let g:slime_python_ipython = 1
 
 set hidden
-let g:racer_cmd = "/Users/bheesham/.cargo/bin/racer"
+if filereadable("/Users/bheesham/.cargo/bin/racer")
+    let g:racer_cmd = "/Users/bheesham/.cargo/bin/racer"
+else
+    let g:racer_cmd = "/home/bheesham/.cargo/bin/racer"
+endif
+
 let g:racer_experimental_completer = 1
 let g:rustfmt_autosave = 1

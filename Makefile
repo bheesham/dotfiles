@@ -10,12 +10,18 @@ do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim config bin general lein
 	$(STOW) -S -t $(HOME)/bin bin
 	$(STOW) -S -t $(HOME)/.asdf asdf
 	$(STOW) -S -t $(HOME) lein
-	ln -fs $(HOME)/.config/repoint/implant.sh $(HOME)/bin
 
 up: 
 	$(GET) https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > vim/.vim/autoload/plug.vim
 	$(GET) https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > bin/lein
+	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/repoint > bin/repoint
+	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/repoint.bat > bin/repoint.bat
+	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/repoint.ps1 > bin/repoint.ps1
+	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/repoint.sml > bin/repoint.sml
+	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/implant.sh > bin/implant.sh
 	chmod 0755 bin/lein
+	chmod 0755 bin/implant.sh
+	chmod 0755 bin/repoint*
 
 $(HOME)/.asdf:
 	mkdir -p $(HOME)/.asdf
