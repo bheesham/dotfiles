@@ -2,11 +2,11 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+    source /etc/bashrc
 fi
 
 export PATH=/Users/bheesham/.local/bin:$PATH
 
 if [ -f ~/.bash_work ]; then
-	. ~/.bash_work
+    source ~/.bash_work
 fi

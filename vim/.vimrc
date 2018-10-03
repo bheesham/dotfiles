@@ -19,12 +19,13 @@ set splitright
 set cursorline
 set wrapscan
 set report=0
+set number
 set relativenumber
-set nu
 set clipboard=unnamed
 set nobackup
 set swapfile
 set dir=~/tmp
+set modeline
 
 au FocusGained,BufEnter * :checktime
 
