@@ -7,3 +7,5 @@
 	template = /Users/bheesham/.stCommitMsg
 [diff]
 	tool = vimdiff
+[push]
+	default = simple

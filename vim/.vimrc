@@ -24,10 +24,13 @@ set relativenumber
 set clipboard=unnamed
 set nobackup
 set swapfile
-set dir=~/tmp
+set dir=~/tmp//
 set modeline
+set encoding=utf-8
+set fileencoding=utf-8
 
 au FocusGained,BufEnter * :checktime
+autocmd BufWritePre * :%s/\s\+$//e
 
 set list                   " Show non-printable characters.
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -56,13 +59,22 @@ Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'hashivim/vim-terraform'
+Plug 'editorconfig/editorconfig-vim'
+
+if has('gui_running')
+  Plug 'jonathanfilip/vim-lucius'
+endif
 
 call plug#end()
 
+if has('gui_running')
+  colorscheme lucius
+endif
+
 let g:ctrlp_working_path_mode = 'ra'
-if executable('rg')
-    let g:ctrlp_user_command = 'rg --files -g "" --color never %s'
-    let g:ctrlp_use_caching = 0
+if executable('fd')
+    let g:ctrlp_user_command = 'fd --color never --full-path -E _accounts -E jenkins/backup %s'
+    let g:ctrlp_use_caching = 1
 endif
 
 map <C-f> :NERDTreeToggle<CR>
@@ -81,3 +93,6 @@ endif
 
 let g:racer_experimental_completer = 1
 let g:rustfmt_autosave = 1
+
+command InsDate :exe 'norm i' . system('date --iso-8601=seconds')
+nmap <C-g> :InsDate<CR>
