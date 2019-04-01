@@ -11,7 +11,7 @@ do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim config bin general lein
 	$(STOW) -S -t $(HOME)/.asdf asdf
 	$(STOW) -S -t $(HOME) lein
 
-up: 
+up:
 	$(GET) https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > vim/.vim/autoload/plug.vim
 	$(GET) https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > bin/lein
 	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/repoint > bin/repoint

@@ -3,8 +3,6 @@
     email = bpersaud@auvik.com
 [core]
 	excludesfile = /Users/bheesham/.gitignore_global
-[commit]
-	template = /Users/bheesham/.stCommitMsg
 [diff]
 	tool = vimdiff
 [push]
