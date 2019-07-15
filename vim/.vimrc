@@ -60,6 +60,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'hashivim/vim-terraform'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'leafgarland/typescript-vim'
 
 if has('gui_running')
   Plug 'jonathanfilip/vim-lucius'
@@ -95,4 +96,8 @@ let g:racer_experimental_completer = 1
 let g:rustfmt_autosave = 1
 
 command InsDate :exe 'norm i' . system('date --iso-8601=seconds')
-nmap <C-g> :InsDate<CR>
+nmap <C-k> :InsDate<CR>
+
+
+
+

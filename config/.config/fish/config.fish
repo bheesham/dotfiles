@@ -1,23 +1,4 @@
-function try_add_path -d "Attempts to add a directory to $PATH."
-  for path in $argv
-    if test -d $path
-      set -x PATH $PATH $path
-    end
-  end
-end
-
-function fish_prompt -d "Customize the fish prompt."
-  echo (whoami) @ (hostname) / (basename (pwd))
-  echo -n '$ '
-end
-
-function cls -d "clear and ls"
-    clear
-    ls
-end
-
-set -x GOPATH $HOME/go
-set -x GOBIN $GOPATH/bin
+source $HOME/.config/fish/utils.fish
 
 set -x PATH ""
 try_add_path $HOME/bin $HOME/.cargo/bin $HOME/.cabal/bin $HOME/.rvm/bin \
@@ -34,31 +15,14 @@ try_add_path $HOME/bin $HOME/.cargo/bin $HOME/.cabal/bin $HOME/.rvm/bin \
              $GOPATH/bin \
              /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
 
-if not test "$TERM" = "dumb"
-  fish_vi_key_bindings
-end
-
-if uname -a | grep -q Darwin
-  set -x DEP_OPENSSL_INCLUDE /usr/local/opt/openssl/include
-  set -x OPENSSL_INCLUDE_DIR /usr/local/opt/openssl/include
-  set -x OPENSSL_LIB_DIR /usr/local/opt/openssl/lib
-end
-
-for trout in $HOME/.config/fish/work.fish $HOME/.config/fish/priv.fish $HOME/.asdf/asdf.fish
-  if test -e $trout
-    source $trout
-  end
-end
-
-set -x EDITOR vim
-set -x HOMEBREW_EDITOR vim
-set -x SHELL /usr/local/bin/fish
-
-alias ku "kubectl"
-alias dc "docker-compose"
-alias please "sudo"
-set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
-
 # opam configuration
 source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-set -g fish_user_paths "/usr/local/opt/bison/bin" $fish_user_paths
+
+try_add_fish_user_path /usr/local/opt/bison/bin \
+                       /usr/local/opt/curl/bin
+
+try_source $HOME/.config/fish/os_mac.fish \
+           $HOME/.config/fish/work.fish \
+           $HOME/.config/fish/priv.fish \
+           $HOME/.asdf/asdf.fish \
+           $HOME/.config/fish/profile.fish
