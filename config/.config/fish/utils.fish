@@ -15,8 +15,7 @@ function prune_git -d "Prunes all git branches that have been merged."
      and test "$argv[1]" != ""
     set branch $argv[1]
   end
-
-  echo git branch --merged="$branch" | grep -v "$branch" | xargs git branch -d
+  git branch --merged="$branch" | grep -v "$branch" | xargs git branch -d
 end
 
 function try_source -d "Attempts to source a file if it exists."
