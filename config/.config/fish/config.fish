@@ -1,8 +1,9 @@
 source $HOME/.config/fish/utils.fish
 
 set -x PATH ""
-try_add_path $HOME/bin $HOME/.cargo/bin $HOME/.cabal/bin $HOME/.rvm/bin \
-             $HOME/.local/bin \
+
+try_add_path $HOME/bin $HOME/.local/bin \
+             $HOME/.cargo/bin $HOME/.cabal/bin $HOME/.rvm/bin \
              $HOME/Library/Python/3.7/bin \
              /usr/local/opt/imagemagick@6/bin \
              /usr/local/MacGPG2/bin /Library/TeX/texbin \
@@ -12,17 +13,13 @@ try_add_path $HOME/bin $HOME/.cargo/bin $HOME/.cabal/bin $HOME/.rvm/bin \
              /usr/lib/node_modules/express-generator/bin \
              /Applications/Postgres.app/Contents/Versions/9.5/bin \
              /usr/local/opt/bison/bin \
-             $GOPATH/bin \
+             /usr/local/smlnj/bin \
+             /usr/local/opt/curl/bin \
              /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
 
-# opam configuration
-source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-try_add_fish_user_path /usr/local/opt/bison/bin \
-                       /usr/local/opt/curl/bin
-
-try_source $HOME/.config/fish/os_mac.fish \
-           $HOME/.config/fish/work.fish \
+try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/priv.fish \
+           $HOME/.config/fish/os_mac.fish \
+           $HOME/.config/fish/work.fish \
            $HOME/.asdf/asdf.fish \
-           $HOME/.config/fish/profile.fish
+           $HOME/.opam/opam-init/init.fish

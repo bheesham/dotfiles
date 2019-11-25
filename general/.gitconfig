@@ -2,8 +2,14 @@
     name = Bheesham Persaud
     email = bpersaud@auvik.com
 [core]
-	excludesfile = /Users/bheesham/.gitignore_global
+    excludesfile = /Users/bheesham/.gitignore_global
 [diff]
-	tool = vimdiff
+    tool = tkdiff
 [push]
-	default = simple
+    default = current
+[submodule]
+    recurse = true
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
+[url "git@bitbucket.org:"]
+    insteadOf = https://bitbucket.org/

@@ -2,19 +2,8 @@ if [ -f ~/dev/auvik_ops/dist/auvikrc ]; then
     source ~/dev/auvik_ops/dist/auvikrc
 fi
 
+if [ -f ~/dev/devops/dist/devops.sh ]; then
+    source ~/dev/devops/dist/devops.sh
+fi
+
 export PRIVATE_AUVIK_CREDENTIALS=/Users/bheesham/.st.cfg
-
-function oidUpdate {
-    st auvik.my
-    pushd /tmp 
-
-    getAllSysDescr > /dev/null &
-
-    auvik -w /tmp/ni.json nodeInfo > /dev/null && \
-        findSysOIDs /tmp/ni.json && \
-        newOidLookup /tmp/all_systemobjids.json > /tmp/new_oids.txt
-
-    fg 1
-    popd
-    st
-}

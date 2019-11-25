@@ -2,9 +2,9 @@ if not test "$TERM" = "dumb"
   fish_vi_key_bindings
 end
 
-set -x EDITOR vim
-set -x HOMEBREW_EDITOR vim
-set -x SHELL /usr/local/bin/fish
+set -xU EDITOR vim
+set -xU HOMEBREW_EDITOR vim
+set -xU SHELL /usr/local/bin/fish
 
 alias ku "kubectl"
 alias dc "docker-compose"

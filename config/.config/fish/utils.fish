@@ -21,7 +21,7 @@ end
 function try_source -d "Attempts to source a file if it exists."
   for path in $argv
     if test -e $path
-      source $path
+      source $path > /dev/null
     end
   end
 end
@@ -33,12 +33,3 @@ function try_add_path -d "Attempts to add a directory to $PATH."
     end
   end
 end
-
-function try_add_fish_user_path -d "Attempts to add a directory to $fish_user_path."
-  for path in $argv
-    if test -d $path
-      set -x fish_user_paths $fish_user_paths $path
-    end
-  end
-end
-
