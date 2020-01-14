@@ -21,7 +21,10 @@ end
 function try_source -d "Attempts to source a file if it exists."
   for path in $argv
     if test -e $path
-      source $path > /dev/null
+      source $path
+      if test $status -ne 0
+        echo "   "🐟- $path
+      end
     end
   end
 end
@@ -29,7 +32,10 @@ end
 function try_add_path -d "Attempts to add a directory to $PATH."
   for path in $argv
     if test -d $path
-      set -x PATH $PATH $path
+      set -x PATH $path $PATH
+      if test $status -ne 0
+        echo "   "📍- $path
+      end
     end
   end
 end
