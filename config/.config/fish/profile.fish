@@ -16,6 +16,12 @@ alias please "sudo"
 alias notes "vim $HOME/notes"
 
 function fish_prompt -d "Customize the fish prompt."
-  echo 🦥 @ (hostname) / (basename (pwd))
+  echo 🦥 @ (hostname) / (basename (pwd)) / (date +'%Y-%m-%d %H:%M:%S')
   echo -n "🐡> "
+end
+
+function fish_greeting
+    if which -s fortune
+        fortune
+    end
 end

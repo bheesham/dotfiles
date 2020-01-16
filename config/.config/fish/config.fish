@@ -1,8 +1,6 @@
-echo === preparing to fish
-
 source $HOME/.config/fish/utils.fish
 
-echo [📍] updating path
+echo -n 📍
 set -x PATH ""
 try_add_path /sbin /bin \
              /usr/sbin /usr/bin \
@@ -26,7 +24,7 @@ try_add_path /sbin /bin \
              $HOME/.local/bin \
              $HOME/bin
 
-echo [🐟] sourcing fish
+echo 🐟
 try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/priv.fish \
            $HOME/.config/fish/lang_go.fish \
@@ -34,5 +32,3 @@ try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/work.fish \
            $HOME/.asdf/asdf.fish \
            $HOME/.opam/opam-init/init.fish
-
-echo === ready to fish
