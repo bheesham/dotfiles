@@ -31,8 +31,8 @@ end
 
 function try_add_path -d "Attempts to add a directory to $PATH."
   for path in $argv
-    if test -d $path
-      set -x PATH $path $PATH
+    if test \( -d $path \) -a \( $path != "." \)
+      set -gx PATH $path $PATH
       if test $status -ne 0
         echo "   "📍- $path
       end

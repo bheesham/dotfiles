@@ -1,7 +1,6 @@
 source $HOME/.config/fish/utils.fish
 
-echo -n 📍
-set -x PATH ""
+set -gx PATH ""
 try_add_path /sbin /bin \
              /usr/sbin /usr/bin \
              /usr/local/sbin /usr/local/bin \
@@ -23,8 +22,8 @@ try_add_path /sbin /bin \
              $HOME/.cargo/bin \
              $HOME/.local/bin \
              $HOME/bin
+echo -n 📍
 
-echo 🐟
 try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/priv.fish \
            $HOME/.config/fish/lang_go.fish \
@@ -32,3 +31,6 @@ try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/work.fish \
            $HOME/.asdf/asdf.fish \
            $HOME/.opam/opam-init/init.fish
+echo -n 🐟
+
+echo !

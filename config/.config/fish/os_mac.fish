@@ -9,5 +9,12 @@ if uname | grep -q Darwin
 
     alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs --no-window-system"
 
-    set -x DYLD_LIBRARY_PATH /usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
+    set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
+
+    set -gx PYENV_ROOT $HOME/.pyenv
+    set -gx PYENV_SHELL fish
+
+    try_add_path (pyenv root)/shims
+
+    echo -n 🍎
 end
