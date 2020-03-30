@@ -15,6 +15,7 @@ if uname | grep -q Darwin
     set -gx PYENV_SHELL fish
 
     try_add_path (pyenv root)/shims
+    try_add_path /usr/local/opt/llvm/bin
 
     echo -n 🍎
 end

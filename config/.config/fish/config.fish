@@ -27,6 +27,7 @@ echo -n 📍
 try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/priv.fish \
            $HOME/.config/fish/lang_go.fish \
+           $HOME/.config/fish/lang_java.fish \
            $HOME/.config/fish/os_mac.fish \
            $HOME/.config/fish/work.fish \
            $HOME/.asdf/asdf.fish \
