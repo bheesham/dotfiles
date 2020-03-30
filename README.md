@@ -3,7 +3,7 @@
 ### MacOSX
 
 ```sh
-brew install git stow gmake coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc pyenv
+brew install git stow gmake coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc pyenv jenv
 git submodule update --init
 gmake
 ```
