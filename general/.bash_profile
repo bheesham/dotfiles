@@ -22,3 +22,5 @@ export PS1="`whoami` $ "
 alias tg="rg --type-add 'conf:*.conf' --type-add 'jenkins:Jenkinsfile' --type-add 'npl:*.npl' --type-add 'schema:*.schema' --type-add 'docker:Dockerfile' --type-add 'tf:*.tf'"
 
 export PYENV_SHELL=bash
+
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -6,7 +6,7 @@ set -gx EDITOR vim
 set -gx HOMEBREW_EDITOR vim
 set -gx SHELL /usr/local/bin/fish
 
-if which -s rg
+if which rg > /dev/null
     alias tg "rg --type-add 'conf:*.conf' --type-add 'jenkins:Jenkinsfile' --type-add 'npl:*.npl' --type-add 'schema:*.schema' --type-add 'docker:Dockerfile' --type-add 'tf:*.tf'"
 end
 
@@ -21,7 +21,7 @@ function fish_prompt -d "Customize the fish prompt."
 end
 
 function fish_greeting
-    if which -s fortune
+    if which fortune > /dev/null
         fortune
     end
 end

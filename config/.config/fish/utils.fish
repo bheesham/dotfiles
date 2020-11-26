@@ -6,7 +6,7 @@ end
 function prune_git -d "Prunes all git branches that have been merged."
   set branch master
 
-  if which -s git
+  if which git > /dev/null
      and test -d .git
     set branch (env GIT_PAGER=cat git branch | awk -e '/\* (.+)$/ { print $2; }')
   end
