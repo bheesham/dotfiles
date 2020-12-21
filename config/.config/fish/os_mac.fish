@@ -11,10 +11,6 @@ if uname | grep -q Darwin
 
     set -gx DYLD_FALLBACK_LIBRARY_PATH /usr/local/opt/openssl/lib
 
-    set -gx PYENV_ROOT $HOME/.pyenv
-    set -gx PYENV_SHELL fish
-
-    try_add_path (pyenv root)/shims
     try_add_path /usr/local/opt/llvm/bin
 
     echo -n 🍎

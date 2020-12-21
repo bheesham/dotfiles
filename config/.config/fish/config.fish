@@ -21,11 +21,13 @@ try_add_path /sbin /bin \
              $HOME/.cabal/bin \
              $HOME/.cargo/bin \
              $HOME/.local/bin \
+             $HOME/.emacs.d/bin \
              $HOME/bin
 echo -n 📍
 
 try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/priv.fish \
+           $HOME/.config/fish/lang_python.fish \
            $HOME/.config/fish/lang_go.fish \
            $HOME/.config/fish/lang_java.fish \
            $HOME/.config/fish/os_mac.fish \

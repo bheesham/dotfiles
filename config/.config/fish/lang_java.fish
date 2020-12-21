@@ -1,4 +1,4 @@
-if which jenv > /dev/null
+if which jenv > /dev/null 2>/dev/null
     try_add_path $HOME/.jenv/bin
     try_add_path $HOME/.jenv/shims
 
