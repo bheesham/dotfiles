@@ -4,19 +4,21 @@ set -gx PATH ""
 try_add_path /sbin /bin \
              /usr/sbin /usr/bin \
              /usr/local/sbin /usr/local/bin \
+             /opt/local/bin \
              $HOME/Library/Python/3.7/bin \
-             /usr/local/opt/imagemagick@6/bin \
-             /usr/local/MacGPG2/bin \
              /Library/TeX/texbin \
-             /usr/local/opt/coreutils/libexec/gnubin \
-             /usr/local/opt/gnu-sed/bin \
-             /usr/local/opt/python@2/libexec/bin \
+             /usr/local/opt/imagemagick@6/bin \
              /usr/lib/node_modules/express-generator/bin \
-             /usr/local/opt/bison/bin \
-             /usr/local/smlnj/bin \
-             /usr/local/opt/curl/bin \
+             /usr/local/MacGPG2/bin \
              /usr/local/lib/ruby/gems/2.6.0/bin \
+             /usr/local/opt/bison/bin \
+             /usr/local/opt/coreutils/libexec/gnubin \
+             /usr/local/opt/gnu-sed/libexec/gnubin \
+             /usr/local/opt/curl/bin \
+             /usr/local/opt/gambit-scheme/current/bin/ \
+             /usr/local/opt/python@2/libexec/bin \
              /usr/local/opt/ruby/bin \
+             /usr/local/smlnj/bin \
              $HOME/.rvm/bin \
              $HOME/.cabal/bin \
              $HOME/.cargo/bin \

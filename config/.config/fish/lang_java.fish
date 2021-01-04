@@ -10,7 +10,6 @@ if which jenv > /dev/null 2>/dev/null
         try_source /usr/local/Cellar/jenv/(jenv --version | awk '{ print $2; }')/libexec/libexec/../completions/jenv.fish
     end
 
-    jenv rehash 2>/dev/null
     function jenv
         set command $argv[1]
         set -e argv[1]

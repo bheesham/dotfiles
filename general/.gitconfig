@@ -9,7 +9,11 @@
     default = current
 [submodule]
     recurse = true
+
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
+
 [url "git@bitbucket.org:"]
     insteadOf = https://bitbucket.org/
+[pull]
+	ff = only
