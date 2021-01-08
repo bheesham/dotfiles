@@ -32,7 +32,9 @@ try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/lang_python.fish \
            $HOME/.config/fish/lang_go.fish \
            $HOME/.config/fish/lang_java.fish \
+           $HOME/.config/fish/lang_k8s.fish \
            $HOME/.config/fish/os_mac.fish \
+           $HOME/.config/fish/os_linux.fish \
            $HOME/.config/fish/work.fish \
            $HOME/.asdf/asdf.fish \
            $HOME/.opam/opam-init/init.fish

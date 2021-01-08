@@ -1,2 +1,6 @@
 vim/.vim/plugged
 vim/.vim/.netrwhist
+bin/sops
+bin/kubectl
+bin/minikube
+bin/skaffold

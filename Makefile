@@ -1,7 +1,7 @@
 .PHONY: do up
 
 STOW:=stow --verbose=3
-GET:=curl -fsS
+GET:=curl -fsSL
 
 do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim config bin general lein
 	$(STOW) -S -t $(HOME) vim
@@ -22,8 +22,19 @@ up:
 	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/repoint.sml > bin/repoint.sml
 	$(GET) https://raw.githubusercontent.com/cannam/repoint/master/implant.sh > bin/implant.sh
 	chmod 0755 bin/lein
-	chmod 0755 bin/implant.sh
 	chmod 0755 bin/repoint*
+	chmod 0755 bin/implant.sh
+
+ifeq ($(shell uname -s),Linux)
+	$(GET) https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 > bin/skaffold
+	$(GET) https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 > bin/minikube
+	$(GET) "https://storage.googleapis.com/kubernetes-release/release/$(shell curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" > bin/kubectl
+	$(GET) https://github.com/mozilla/sops/releases/download/v3.6.1/sops-v3.6.1.linux > bin/sops
+	chmod 0755 bin/skaffold
+	chmod 0755 bin/minikube
+	chmod 0755 bin/kubectl
+	chmod 0755 bin/sops
+endif
 
 $(HOME)/.asdf:
 	mkdir -p $(HOME)/.asdf
