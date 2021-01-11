@@ -9,7 +9,7 @@ if not test "$TERM" = "dumb"
   fish_vi_key_bindings
 end
 
-if uname -s | grep Darwin
+if uname -s | grep -q Darwin
     set -gx SHELL /usr/local/bin/fish
 else
     set -gx SHELL /usr/bin/fish
