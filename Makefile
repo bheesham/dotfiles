@@ -26,14 +26,23 @@ up:
 	chmod 0755 bin/implant.sh
 
 ifeq ($(shell uname -s),Linux)
-	$(GET) https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 > bin/skaffold
-	$(GET) https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 > bin/minikube
-	$(GET) "https://storage.googleapis.com/kubernetes-release/release/$(shell curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" > bin/kubectl
-	$(GET) https://github.com/mozilla/sops/releases/download/v3.6.1/sops-v3.6.1.linux > bin/sops
-	chmod 0755 bin/skaffold
-	chmod 0755 bin/minikube
-	chmod 0755 bin/kubectl
-	chmod 0755 bin/sops
+	$(GET) https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 > bin/skaffold && \
+		chmod 0755 bin/skaffold
+
+	$(GET) https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 > bin/minikube && \
+		chmod 0755 bin/minikube
+
+	$(GET) "https://storage.googleapis.com/kubernetes-release/release/$(shell curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" > bin/kubectl && \
+		chmod 0755 bin/kubectl
+
+	$(GET) https://github.com/mozilla/sops/releases/download/v3.6.1/sops-v3.6.1.linux > bin/sops && \
+		chmod 0755 bin/sops
+
+	$(GET) -fSsLo terraform.zip https://releases.hashicorp.com/terraform/0.14.4/terraform_0.14.4_linux_amd64.zip && \
+		unzip terraform.zip && \
+		rm terraform.zip && \
+		mv terraform bin/terraform && \
+		chmod 0755 bin/terraform
 endif
 
 $(HOME)/.asdf:

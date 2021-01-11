@@ -4,3 +4,4 @@ bin/sops
 bin/kubectl
 bin/minikube
 bin/skaffold
+bin/terraform
