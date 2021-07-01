@@ -4,6 +4,3 @@
 [submodule "pyenv/.pyenvc"]
 	path = pyenv/.pyenv
 	url = https://github.com/pyenv/pyenv.git
-[submodule "emacs/.emacs.d"]
-	path = emacs/.emacs.d
-	url = https://github.com/hlissner/doom-emacs

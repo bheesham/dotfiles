@@ -5,7 +5,6 @@ GET:=curl -fsSL
 
 do: $(HOME)/.config $(HOME)/.asdf $(HOME)/bin up vim config bin general lein
 	$(STOW) -S -t $(HOME) vim
-	$(STOW) -S -t $(HOME) emacs
 	$(STOW) -S -t $(HOME) pyenv
 	$(STOW) -S -t $(HOME) config
 	$(STOW) -S -t $(HOME) general
