@@ -24,6 +24,7 @@ try_add_path /sbin /bin \
              $HOME/.cargo/bin \
              $HOME/.local/bin \
              $HOME/.emacs.d/bin \
+             $HOME/.fly/bin/ \
              $HOME/bin
 echo -n 📍
 
