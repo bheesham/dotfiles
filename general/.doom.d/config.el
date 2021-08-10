@@ -54,4 +54,4 @@
 ;; they are implemented.
 
 (after! rustic
-        (setq rustic-lsp-server 'rls))
+        (setq rustic-lsp-server 'rust-analyzer))
