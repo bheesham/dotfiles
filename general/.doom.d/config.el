@@ -54,4 +54,6 @@
 ;; they are implemented.
 
 (after! rustic
-        (setq rustic-lsp-server 'rust-analyzer))
+  (setq rustic-lsp-server 'rust-analyzer))
+
+(setq projectile-project-search-path '("~/dev/"))

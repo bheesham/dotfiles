@@ -19,3 +19,5 @@
 	ff = only
 [cinnabar]
 	helper = /tmp/tmpw33h9so3/git-cinnabar-master/git-cinnabar-helper
+[init]
+	defaultBranch = main

@@ -1,0 +1,27 @@
+# From: https://github.com/avivace/dotfiles
+
+# Kill the wallpaper window set by Plasma*
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+
+# Set Plasma dialogs and pop ups as floating so they won't get tiled
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"
+
+# Set other stuff as floating
+for_window [class="(?i)*nextcloud*"] floating disable
+
+# Set the desktop background
+exec --no-startup-id feh --bg-scale /home/bheesham/Sync/Share/Sloths/Icon.jpg
+
+# Start the compositor daemonizing it (-b) and enabling shadows (-c)
+exec_always --no-startup-id picom -cb
