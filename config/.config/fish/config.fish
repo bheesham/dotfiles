@@ -5,7 +5,7 @@ try_add_path /sbin /bin \
              /usr/sbin /usr/bin \
              /usr/local/sbin /usr/local/bin \
              /opt/local/bin \
-             $HOME/Library/Python/3.7/bin \
+             /usr/local/Gambit/bin \
              /Library/TeX/texbin \
              /usr/local/opt/imagemagick@6/bin \
              /usr/lib/node_modules/express-generator/bin \
@@ -26,7 +26,6 @@ try_add_path /sbin /bin \
              $HOME/.emacs.d/bin \
              $HOME/.fly/bin/ \
              $HOME/bin
-echo -n 📍
 
 try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/priv.fish \
@@ -39,6 +38,3 @@ try_source $HOME/.config/fish/profile.fish \
            $HOME/.config/fish/work.fish \
            $HOME/.asdf/asdf.fish \
            $HOME/.opam/opam-init/init.fish
-echo -n 🐟
-
-echo !

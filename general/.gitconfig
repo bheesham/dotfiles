@@ -21,3 +21,8 @@
 	helper = /tmp/tmpw33h9so3/git-cinnabar-master/git-cinnabar-helper
 [init]
 	defaultBranch = main
+[safe]
+	directory = /home/bheesham/dev/gambit/include
+	directory = /home/bheesham/dev/gambit
+	directory = /home/bheesham/dev
+	directory = /home/bheesham

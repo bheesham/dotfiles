@@ -21,6 +21,4 @@ if which jenv > /dev/null 2>/dev/null
             command jenv "$command" $argv
         end
     end
-
-    echo -n ☕
 end

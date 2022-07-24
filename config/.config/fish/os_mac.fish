@@ -13,6 +13,4 @@ if uname | grep -q Darwin
     set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
     try_add_path /usr/local/opt/llvm/bin
-
-    echo -n 🍎
 end

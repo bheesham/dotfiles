@@ -5,5 +5,3 @@ set -Ux PYENV_SHELL fish
 
 pyenv init --path | source
 pyenv init - | source
-
-echo -n 🐍

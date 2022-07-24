@@ -29,5 +29,3 @@ function fish_greeting
         fortune
     end
 end
-
-echo -n 🧑
